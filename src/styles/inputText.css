@@ -1,0 +1,30 @@
+.inputText {
+	width: 50%;
+	min-width: 500px;
+	height: 50px;
+	border: 0.1px solid black;
+	font-size: 18px;
+	text-align: center;
+	box-sizing: border-box;
+	/* position: absolute; */
+	/* bottom: 0; */
+}
+.inputText:focus {
+	outline: none;
+	border: 1px solid black;
+}
+
+.input_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem 0;
+}
+
+.input_radio_wrap {
+	width: 300px;
+	margin: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+}

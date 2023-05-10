@@ -1,0 +1,19 @@
+.container {
+	width: 15px;
+	height: 15px;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid white;
+    background-color: white;
+	cursor: pointer;
+}
+.container:hover {
+	border: 2px solid red;
+}
+.checkIcon {
+	position: absolute;
+	font-size: 30px;
+	color: red;
+}
