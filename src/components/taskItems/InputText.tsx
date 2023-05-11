@@ -12,6 +12,8 @@ interface ListTypes {
 const InputText = () => {
 	const [isStatus, setIsStatus] = useState<string>('');
 	const [inputText, setInputText] = useState<string>('');
+		const [errMSG, setErrMSG] = useState('');
+
 	// const nextId = useRef(0);
 
 	const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +28,7 @@ const InputText = () => {
 			text: inputText,
 		};
 		if (!isStatus || !inputText) {
-			return console.log('Please write or select!');
+			return setErrMSG('Please write or select!');
 		}
 		const colAdd = collection(database, 'TasksBoard');
 		try {
@@ -82,6 +84,7 @@ const InputText = () => {
 					Done
 				</label>
 			</div>
+			{errMSG ? <div className='input_errMsg'>{errMSG}</div> : ''}
 			<button onClick={submitHandler}>입력</button>
 		</form>
 	);

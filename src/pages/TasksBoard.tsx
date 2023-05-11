@@ -5,13 +5,6 @@ import InProgressSection from '../components/inProgress/InProgress';
 import DoneProgress from '../components/done/DoneProgress';
 import { Fragment } from 'react';
 import InputText from '../components/taskItems/InputText';
-// import { useRef, useState } from 'react';
-
-// interface ListTypes {
-// 	id: number;
-// 	text: string;
-// 	status: 'Todo' | 'InProgress' | 'Done';
-// }
 
 const TasksBoard = () => {
 	return (

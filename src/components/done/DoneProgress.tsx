@@ -25,26 +25,19 @@ const Done = () => {
 	}, []);
 
 	// 삭제버튼 핸들러
-	// const handleClickDeleteButton = (id: number) => {
-	// 	setTodos(todos.filter((todo) => todo.id !== id));
-	// };
-	const handleClickDeleteButton = (id: number) => {
-		const docRef = doc(database, 'TasksBoard');
-		where('id', '==', id);
-		deleteDoc(docRef)
-			.then(() => {
-				console.log('Entire Document has been deleted successfully.');
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-		// let todoItems: any[] = [];
-		// todoDatas.forEach((doc) => {
-		// 	todoItems.push(doc.data());
-		// });
-		// setTodos(todoItems);
+	const handleClickDeleteButton = async (id: number) => {
+		const docRef = doc(database, 'TasksBoard', id.toString()); // 삭제할 데이터의 문서 참조 가져오기
+		try {
+			await deleteDoc(docRef); // 문서 삭제
+			console.log('Data deleted!');
+			setTodos([...todos.filter((todo) => todo.id !== id)]);
+		} catch {
+			console.log('Failed to delete data!');
+		}
+		console.log(todos);
+		window.location.reload();
 	};
-
+	
 	const getDatas = async () => {
 		const docRef = query(
 			collection(database, 'TasksBoard'),

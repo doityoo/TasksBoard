@@ -18,7 +18,6 @@ interface ListTypes {
 
 const TodoProgress = () => {
 	const [todos, setTodos] = useState<ListTypes[]>([]);
-	// const todoList = todoHandler();
 
 	useEffect(() => {
 		getDatas();
@@ -30,10 +29,12 @@ const TodoProgress = () => {
 		try {
 			await deleteDoc(docRef); // 문서 삭제
 			console.log('Data deleted!');
+			setTodos([...todos.filter((todo) => todo.id !== id)]);
 		} catch {
 			console.log('Failed to delete data!');
 		}
-		// window.location.reload();
+		console.log(todos)
+		window.location.reload();
 	};
 
 	const getDatas = async () => {

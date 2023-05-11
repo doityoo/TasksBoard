@@ -15,5 +15,3 @@ const Text = ({ children }: TextProps) => {
 };
 
 export default Text;
-
-// <div className={`text ${completed ? 'completedText' : ''}`}>
