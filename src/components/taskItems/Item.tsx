@@ -4,10 +4,10 @@ import Text from './Text';
 
 interface ItemProps {
 	// onClickCheckBox(id: number): void;
-	onClickDeleteButton(id: number): void;
+	onClickDeleteButton(id: string): void;
 	status: string;
 	text: string;
-	id: number;
+	id: string;
 }
 
 const Item = ({ onClickDeleteButton, text, id }: ItemProps) => {

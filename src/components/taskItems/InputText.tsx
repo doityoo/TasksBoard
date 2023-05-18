@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './../../styles/inputText.css';
-import { database } from '../../../src/services/firebase-config';
+import { db } from '../../firebase-config';
 import { addDoc, collection } from 'firebase/firestore';
 
 interface ListTypes {
-	id: number;
+	id: string;
 	status: string;
 	text: string;
 }
@@ -23,14 +23,14 @@ const InputText = () => {
 	const submitHandler = async (e: any) => {
 		e.preventDefault();
 		const item: ListTypes = {
-			id: Date.now(),
+			id: Date.now().toString(),
 			status: isStatus,
 			text: inputText,
 		};
 		if (!isStatus || !inputText) {
 			return setErrMSG('Please write or select!');
 		}
-		const colAdd = collection(database, 'TasksBoard');
+		const colAdd = collection(db, isStatus);
 		try {
 			await addDoc(colAdd, item);
 			console.log('Send Data!');
@@ -57,8 +57,8 @@ const InputText = () => {
 					<input
 						type='radio'
 						name='taskboard'
-						value='todo'
-						checked={isStatus === 'todo'}
+						value='Todo'
+						checked={isStatus === 'Todo'}
 						onChange={handlerChange}
 					/>
 					Todo
@@ -67,8 +67,8 @@ const InputText = () => {
 					<input
 						type='radio'
 						name='taskboard'
-						value='inProgress'
-						checked={isStatus === 'inProgress'}
+						value='In Progress'
+						checked={isStatus === 'In Progress'}
 						onChange={handlerChange}
 					/>
 					In Progress
@@ -77,8 +77,8 @@ const InputText = () => {
 					<input
 						type='radio'
 						name='taskboard'
-						value='done'
-						checked={isStatus === 'done'}
+						value='Done'
+						checked={isStatus === 'Done'}
 						onChange={handlerChange}
 					/>
 					Done
